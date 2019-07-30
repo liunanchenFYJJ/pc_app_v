@@ -113,7 +113,7 @@
         <Layout :style="{padding: '0 24px 0'}">
           <Breadcrumb :style="{margin: '24px 0'}">
             <BreadcrumbItem>体育场馆服务</BreadcrumbItem>
-            <BreadcrumbItem>Components</BreadcrumbItem>
+            <BreadcrumbItem>{{componentsNow}}</BreadcrumbItem>
           </Breadcrumb>
           <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
             <router-view />
@@ -130,21 +130,25 @@
 export default {
   data () {
     return {
-      isCollapsed: false
+      isCollapsed: false,
     }
   },
   computed: {
-    rotateIcon () {
+    rotateIcon() {
       return [
         'menu-icon',
         this.isCollapsed ? 'rotate-icon' : ''
       ];
     },
-    menuitemClasses () {
+    menuitemClasses() {
       return [
         'menu-item',
         this.isCollapsed ? 'collapsed-menu' : ''
       ]
+    },
+    componentsNow() {
+      console.log(this.$route)
+      return this.$route.meta.title;
     }
   },
   methods: {
