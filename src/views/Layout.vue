@@ -46,42 +46,32 @@
         </Menu>
       </Header>
       <Layout>
-        <Sider hide-trigger :style="{background: '#fff', padding: '0 0 24px'}">
-          <Menu active-name="1-2" theme="light" width="auto" :open-names="['1']">
-            <Submenu name="1">
-              <template slot="title">
-                <Icon type="ios-navigate"></Icon>Item 1
-              </template>
-              <MenuItem name="1-1">Option 1</MenuItem>
-              <MenuItem name="1-2">Option 2</MenuItem>
-              <MenuItem name="1-3">Option 3</MenuItem>
-            </Submenu>
-            <Submenu name="2">
-              <template slot="title">
-                <Icon type="ios-keypad"></Icon>Item 2
-              </template>
-              <MenuItem name="2-1">Option 1</MenuItem>
-              <MenuItem name="2-2">Option 2</MenuItem>
-            </Submenu>
-            <Submenu name="3">
-              <template slot="title">
-                <Icon type="ios-analytics"></Icon>Item 3
-              </template>
-              <MenuItem name="3-1">Option 1</MenuItem>
-              <MenuItem name="3-2">Option 2</MenuItem>
-            </Submenu>
+        <Sider hide-trigger :style="{background: '#fff', height: 'calc( 100% )'}">
+          <Menu theme="dark" width="auto" active-name="1">
+            <MenuGroup title="应用菜单">
+              <MenuItem name="1" to="/">
+                <Icon type="md-document" />购票
+              </MenuItem>
+              <MenuItem name="2" to="CardPurchase">
+                <Icon type="md-chatbubbles" />购卡
+              </MenuItem>
+              <MenuItem name="3" to="SiteReservation">
+                <Icon type="md-chatbubbles" />场地预定
+              </MenuItem>
+            </MenuGroup>
           </Menu>
         </Sider>
         <Layout :style="{padding: '0 24px 0'}">
           <Breadcrumb :style="{margin: '24px 0'}">
-            <BreadcrumbItem>Home</BreadcrumbItem>
+            <BreadcrumbItem>体育场馆服务</BreadcrumbItem>
             <BreadcrumbItem>Components</BreadcrumbItem>
-            <BreadcrumbItem>Layout</BreadcrumbItem>
           </Breadcrumb>
           <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
-            <router-view/>
+            <router-view />
           </Content>
-          <Footer>Footer</Footer>
+          <Footer>
+            版权所有：大连理工大学地址：中国辽宁省大连市甘井子区凌工路2号邮编：116024服务热线：0411-84707007
+          </Footer>
         </Layout>
       </Layout>
     </Layout>

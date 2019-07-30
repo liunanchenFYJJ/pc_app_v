@@ -15,12 +15,28 @@ export default new Router({
       children: [
         {
           path: '/',
-          name: 'Home',
+          name: 'TicketPurchase',
           meta: {
-            title: 'home'
+            title: '购票'
           },
-          component: () => import('@/views/Home.vue')
-        }
+          component: () => import('@/views/TicketPurchase.vue')
+        },
+        {
+          path: '/CardPurchase',
+          name: 'CardPurchase',
+          meta: {
+            title: '购卡'
+          },
+          component: () => import('@/views/CardPurchase.vue')
+        },
+        {
+          path: '/SiteReservation',
+          name: 'SiteReservation',
+          meta: {
+            title: '场地预定'
+          },
+          component: () => import('@/views/SiteReservation.vue')
+        },
       ]
     }
   ]

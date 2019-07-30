@@ -1,5 +1,5 @@
 <template>
-    <div id="home">
-        home
+    <div>
+        购票
     </div>
 </template>
