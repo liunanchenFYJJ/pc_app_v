@@ -1,4 +1,4 @@
-<style scoped>
+<style lang="scss" scoped>
 .layout {
   height: inherit;
   border: 1px solid #d7dde4;
@@ -22,43 +22,92 @@
   margin: 0 auto;
   margin-right: 20px;
 }
+.ivu-layout-sider {
+  .menu-icon{
+      transition: all .3s;
+  }
+  .rotate-icon{
+      transform: rotate(90deg) !important;
+  }
+  .menu-item span{
+      display: inline-block;
+      overflow: hidden;
+      width: 69px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      vertical-align: bottom;
+      transition: width .2s ease .2s;
+  }
+  .menu-item i{
+      transform: translateX(0px);
+      transition: font-size .2s ease, transform .2s ease;
+      vertical-align: middle;
+      font-size: 16px;
+  }
+  .collapsed-menu span{
+      width: 0px;
+      transition: width .2s ease;
+  }
+  .collapsed-menu i{
+      transform: translateX(5px);
+      transition: font-size .2s ease .2s, transform .2s ease .2s;
+      vertical-align: middle;
+      font-size: 22px;
+  }
+}
 </style>
 <template>
   <div class="layout">
     <Layout :style="{height: 'inherit'}">
       <Header>
-        <Menu mode="horizontal" theme="dark" active-name="1">
+        <Menu mode="horizontal" 
+          theme="dark" 
+          active-name="1">
           <div class="layout-logo"></div>
           <div class="layout-nav">
             <MenuItem name="1">
-              <Icon type="ios-navigate"></Icon>Item 1
+                <Icon type="ios-paper" />我的订单
             </MenuItem>
-            <MenuItem name="2">
-              <Icon type="ios-keypad"></Icon>Item 2
-            </MenuItem>
+            <Submenu name="2">
+                <template slot="title">
+                    <Icon type="ios-stats" />我的卡票
+                </template>
+                <MenuGroup>
+                    <MenuItem name="2-1">我的票</MenuItem>
+                    <MenuItem name="2-2">我的卡</MenuItem>
+                </MenuGroup>
+            </Submenu>
             <MenuItem name="3">
-              <Icon type="ios-analytics"></Icon>Item 3
-            </MenuItem>
-            <MenuItem name="4">
-              <Icon type="ios-paper"></Icon>Item 4
+                <Icon type="ios-construct" />我的场地
             </MenuItem>
           </div>
         </Menu>
       </Header>
       <Layout>
-        <Sider hide-trigger :style="{background: '#fff', height: 'calc( 100% )'}">
-          <Menu theme="dark" width="auto" active-name="1">
-            <MenuGroup title="应用菜单">
+        <Sider v-model="isCollapsed" 
+              ref="sidebar" 
+              hide-trigger
+              collapsible 
+              :collapsed-width="78" 
+              :style="{background: '#fff', height: 'calc( 100% )'}">
+          <Menu theme="dark" width="auto" active-name="1" :class="menuitemClasses">
+                <Icon @click.native="collapsedSider" 
+                  :class="rotateIcon" 
+                  :style="{margin: '20px 20px', color: 'white'}" 
+                  type="md-menu" 
+                  size="24"></Icon>
               <MenuItem name="1" to="/">
-                <Icon type="md-document" />购票
+                <Icon type="md-document" />
+                <span>购票</span>
               </MenuItem>
               <MenuItem name="2" to="CardPurchase">
-                <Icon type="md-chatbubbles" />购卡
+                <Icon type="md-chatbubbles" />
+                <span>购卡</span>
               </MenuItem>
               <MenuItem name="3" to="SiteReservation">
-                <Icon type="md-chatbubbles" />场地预定
+                <Icon type="md-chatbubbles" />
+                <span>场地预定</span>
               </MenuItem>
-            </MenuGroup>
           </Menu>
         </Sider>
         <Layout :style="{padding: '0 24px 0'}">
@@ -78,5 +127,30 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data () {
+    return {
+      isCollapsed: false
+    }
+  },
+  computed: {
+    rotateIcon () {
+      return [
+        'menu-icon',
+        this.isCollapsed ? 'rotate-icon' : ''
+      ];
+    },
+    menuitemClasses () {
+      return [
+        'menu-item',
+        this.isCollapsed ? 'collapsed-menu' : ''
+      ]
+    }
+  },
+  methods: {
+    collapsedSider () {
+      this.$refs.sidebar.toggleCollapse();
+    }
+  }
+};
 </script>
