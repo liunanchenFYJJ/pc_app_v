@@ -22,7 +22,7 @@ export default new Router({
           component: () => import('@/views/TicketPurchase.vue')
         },
         {
-          path: '/CardPurchase',
+          path: '/cardpurchase',
           name: 'CardPurchase',
           meta: {
             title: '购卡'
@@ -30,12 +30,44 @@ export default new Router({
           component: () => import('@/views/CardPurchase.vue')
         },
         {
-          path: '/SiteReservation',
+          path: '/sitereservation',
           name: 'SiteReservation',
           meta: {
             title: '场地预定'
           },
           component: () => import('@/views/SiteReservation.vue')
+        },
+        {
+          path: '/myorders',
+          name: 'MyOrders',
+          meta: {
+            title: '我的订单'
+          },
+          component: () => import('@/views/MyOrders.vue')
+        },
+        {
+          path: '/mycards',
+          name: 'MyCards',
+          meta: {
+            title: '我的卡'
+          },
+          component: () => import('@/views/MyCards.vue')
+        },
+        {
+          path: '/mytickets',
+          name: 'MyTickets',
+          meta: {
+            title: '我的票'
+          },
+          component: () => import('@/views/MyTickets.vue')
+        },
+        {
+          path: '/mycourt',
+          name: 'MyCourt',
+          meta: {
+            title: '我的场地'
+          },
+          component: () => import('@/views/MyCourt.vue')
         },
       ]
     }
