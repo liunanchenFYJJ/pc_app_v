@@ -46,3 +46,5 @@ DELETE FROM t_test WHERE gender = '';
 
 -- 改
 UPDATE t_test SET username='jj' WHERE id = 1;
+
+CREATE DATABASE shop;
