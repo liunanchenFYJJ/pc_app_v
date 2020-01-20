@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: https://github.com/liunanchenFYJJ
+ * @Date: 2020-01-20 11:10:01
+ * @LastEditors  : https://github.com/liunanchenFYJJ
+ * @LastEditTime : 2020-01-20 13:04:43
+ */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
@@ -20,9 +28,15 @@ router.afterEach(route => {
 });
 
 /* eslint-disable no-new */
+// new Vue({
+//   el: '#app',
+//   router,
+//   components: { App },
+//   template: '<App/>'
+// })
+
 new Vue({
   el: '#app',
   router,
-  components: { App },
-  template: '<App/>'
+  render:(h) => h(App),
 })
