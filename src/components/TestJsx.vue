@@ -9,10 +9,21 @@
 <script>
 export default {
   name: 'jsx_test',
+  props: {
+    msg: {
+      type: String,
+      default: '',
+    }
+  },
   render(h) {
     return (
-      <h1>jsx_demo</h1>
+      <h1 class="h1">{this.msg}</h1>
     )
   },
 }
 </script>
+<style lang="scss">
+  .h1 {
+    color: red;
+  }
+</style>

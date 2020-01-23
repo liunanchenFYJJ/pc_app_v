@@ -9,7 +9,7 @@
 <template>
     <div>
         购票
-        <test-jsx></test-jsx>
+        <test-jsx :msg="msg"></test-jsx>
     </div>
 </template>
 <script>
@@ -19,10 +19,10 @@ export default {
     components: {
         TestJsx
     },
-    // render(h) {
-    //     return (
-    //         <test-jsx></test-jsx>
-    //     )
-    // },
+    data() {
+        return {
+            msg: 'hello msg'
+        }
+    },
 }
 </script>
